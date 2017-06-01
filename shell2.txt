@@ -1,0 +1,168 @@
+shell
+1、编译器：
+	编程语言：机器语言、汇编、高级
+	
+			静态语言：编译型语言
+				强类型（变量）
+				事先转换成可执行格式
+				c  c++ Java c#
+			动态语言：解释型语言
+				弱类型
+				边解释（解释器也是静态语言开发）边执行
+				php shell  Python  perl
+	
+	变量：内存空间， 命名
+	内存：编址的存储单元
+	进程：
+	初始化：没有初始化就是随机数
+	
+	弱：随用随声明，不区分类型
+	强：声明+初始化（11+c=）
+	
+bash的变量类型：
+	环境变量：export VARNAME=value(作用域为当前shell及其子进程)
+	
+	本地变量：（局部变量）
+				VARNAME=value(作用域是整个bash)
+				local VARNAME=value(当前代码段)
+			
+			引用变量：${VARNAME=value}(花括号可以省略)
+					单引号强引用，双引号弱引用
+	位置变量：
+		$1, $2  参数的位置
+		shift
+		
+	特殊变量：
+		导出变量：export
+	
+	echo $?  保存上一个命令状态返回值
+		程序执行结果
+		程序执行返回代码（0表示成功， 错误是1-255表示失败）
+		
+		$# 参数的个数
+		$* 参数列表
+		$@ 参数列表
+		
+求和		
+#!/bin/bash
+#
+if [ $# -lt 2 ];then
+  echo "Usage: lmy4.sh Age1 Age2"
+  exit 8
+fi
+echo "The sum is: $[$1+$2]"
+
+		
+输出重定向：
+	/dev/null
+		数据黑洞
+		
+	撤销变量：unset varname
+	查看有多少变量：set
+	查看当前环境变量：env export printenv
+		
+命令之间的逻辑关系
+	&&（与）
+	1条件为假，已经有结果
+	1条件为真，2条件已经有结果
+变量命名：
+	1、以字母、数字、下划线命名，数字不能开头
+	2、不能和已经有的变量重名
+	3、见名知意
+	
+linux中0为真，其他为假
+
+if语句
+	if 条件；then
+		语句1
+		语句2
+		
+	fi
+
+	if 条件
+	then
+	语句1
+	
+	else
+	语句2
+	
+	fi
+	
+shell中事务算术运算
+	1、let c=$a+$b
+	2、c=$[$a+$b]
+	3、c=$(($a+$b))
+	4、expr 
+		f=`expr $a + $b`  (其中的空格不能省略)
+		
+提前退出当前脚本
+	exit  
+	exit #
+	
+	
+
+	测试的表达式：
+		[ expression ]
+		[[expression]]
+		test expression
+	
+	
+文件测试：
+  bash测试有三种：
+  
+	整数测试
+	-gt （大于）
+	-le （小于等于）
+	-ne （不等于）
+	-eq
+	-ge （大于等于）
+	-lt （小于）
+		双目操作
+		
+	-e file 测试文件是否存在
+	-f file 测试文件是否为普通文件
+	-d file 测试文件 是否为目录
+	-r file 测试当前用户对文件是否有可读操作
+	-w
+	-x
+	
+多分支if
+	
+	
+	
+bash -x  检查脚本有没有错误
+
+定义退出状态码：如果脚本没有明确指出退出状态码	
+	最后一条命令即为退出脚本的状态退出码
+
+	
+sed  grep  awk
+
+sed:Stream EDitor
+	行编辑器（全屏编辑器：vi）
+	一次读取一行，加载到内存，执行
+	模式空间，来做匹配
+	默认不编辑源文件，仅仅对数据空间做处理
+
+sed [options] 'AddressCommand' file 
+	
+	Address 
+	1、startLine,endLine
+	2、/正则表达式/
+	3、/模式1/ /模式2/
+	4、LineNumber
+	5、Startline,+n
+	command
+		d:删除符合条件的行
+		p:显示符合条件的行
+		a \string  指定行后追加新行，内容为String
+		i \String  指定行前追加新行，内容为String
+		
+字符串的测试
+	== 测试时否相等
+	!=  测试时否不等
+	
+	
+	
+	
+	
