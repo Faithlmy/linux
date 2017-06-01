@@ -163,6 +163,46 @@ sed [options] 'AddressCommand' file
 	!=  测试时否不等
 	
 	
+for 循环
+	for 变量  in 列表 ； do
+		循环体
+	done
+	
+生成列表的方式
+	seq
+	
+	
+	
+文本编辑器
+	vi : visual Interface
+	vim : VI improved
+	
+vi:
+
+	vi mode :
+	
+	模式不同，解释的意义不同
+	complie mode:
+	input mode:
+	end mode :
+	
+	default complie mode 
+	
+	模式转换：
+	编辑->输入：
+		i:当前光标前面转换输入
+		a:        后
+		o:  下方新建一行
+		
+		I: 行首
+		A: 行尾
+		O:  上面新建一行
+	
+	open the file:
+	vi /path/to/file
+	vim +# open and site lines
+	
+	close the file :
 	
 	
 	
