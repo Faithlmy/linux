@@ -69,7 +69,8 @@ TLD:
 		接受本地用户查询（递归）
 		外部客户请求
 		
-		
+	
+服务器的常见类型：	
 	主从：
 		主DNS服务器：数据修改
 		辅助DNS服务器，请求数据同步
@@ -79,4 +80,8 @@ TLD:
 				refresh(刷新时间)
 				retry
 				expire
-				nagative ana
+				nagative answer TTL
+				
+			缓存DNS服务器：
+			转发器
+			
