@@ -47,3 +47,36 @@ stub resolver:名称解析器
 
 libnss_files.so
 libnss_dns.so
+
+
+TLD:
+	组织域：.com  .org  .net  .cc
+	国家域: .cn   .tw  .hk  .lq
+	反向域：反向 IP-->FQDN
+			正向 FQDN-->IP
+			
+		递归（客户）只发一次请求
+		迭代（服务器）多次请求
+	解析：
+		反向 IP-->FQDN
+		正向 FQDN-->IP
+		
+	DNS：分布式数据库
+		上级仅仅知道直接下级
+		下级只知道根的位置
+		
+	DNS服务器：
+		接受本地用户查询（递归）
+		外部客户请求
+		
+		
+	主从：
+		主DNS服务器：数据修改
+		辅助DNS服务器，请求数据同步
+			每隔一段时间，请求数据同步
+			
+				serial number(版本号)
+				refresh(刷新时间)
+				retry
+				expire
+				nagative ana
