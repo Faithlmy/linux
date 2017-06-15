@@ -189,7 +189,7 @@ vi:
 	default complie mode 
 	
 	模式转换：
-	编辑->输入：
+	编辑->输入： 
 		i:当前光标前面转换输入
 		a:        后
 		o:  下方新建一行
@@ -203,6 +203,661 @@ vi:
 	vim +# open and site lines
 	
 	close the file :
+	末行模式
+	:W!  强保存  管理员
+	编辑模式：
+	ZZ：保存退出
+	
+	末行模式：
+	set nu 显示行号
+	
+	末行-->编辑  Esc
 	
 	
 	
+移动光标：
+1、逐字符移动：（编辑模式）
+	h：左
+	l：右
+	j：下
+	k：上
+2、逐个单词移动：
+	w 下一个词首
+	e 跳当前或下一个 单词词尾
+	b 词首
+	配合数字键使用
+3、行内移动
+	0  行首
+	^  行首
+	$：绝对行尾
+4、行间跳转
+	#G 跳转到#行
+	G 最后一行
+	末行模式  输入行号
+	
+5、翻屏
+	Ctrl+f 向下翻一屏
+	Ctrl+b 向上翻一屏
+	
+	Ctrl+d 想下翻半屏
+	Ctrl+u 向上翻半屏
+	
+6、删除字符：
+	x：删除光标所在的单个字符
+	#x删除光标所在的#字符 
+	
+7、删除命令：
+	dd  删除光标所在行
+	#dd 从光标所在行的#行
+	
+	#dw  #de  #db
+	末行模式 ：删除 某行 到 某行  1,8d
+	.:当前行
+	$ 最后一行
+	+# 向下的#行
+
+8、粘贴命令：
+	p
+	P  
+9、复制
+	y
+10、替换
+	r
+11、撤销 u 
+
+12、撤销的撤销  Ctrl+r
+13、重复此前的操作 .
+14、可视化操作
+		V
+		v 
+15、查找
+	/
+	?
+16、末行模式使用s
+	% 全文
+17、vim编辑多个文件
+	：next
+	：prev
+	：last
+	：first
+	退出：
+	：qa
+	：q
+18、分屏显示文件
+	Ctrl+w，s 水平
+	Ctrl+w，v 垂直
+	Ctrl+w，arrow
+19、分窗口显示多个文件
+	vim -o 水平 
+	vim -O 垂直
+20、另存为
+	：w
+21、将另一个文件的内容填充在当前文件
+	：r
+22、跟shell交互
+	:! command
+23、高级话题
+	1）显示行号
+		：set nu 
+		：set nonu
+	2) 忽略或区分大小写
+		:set ignorecase
+		:set ic
+		:set noic
+	3) 设置自动缩进
+		:set autoindent
+		:set ai
+		:set noai
+	4)高亮文本显示
+		：set hlsearch
+		:set nohlsearch
+	5)语法高亮
+		:syntax on
+		:syntax off
+24、vim的配置文件
+	/etc/vimrc
+	~/.vimrc
+	
+26、查看有多少用户： cat /etc/passwd | cut -f 1 -d: | less
+27、find 
+	-name ‘filename’
+	-iname 
+	-user 属主
+	-group 属组
+	-regex
+	-uid
+	-gid
+	-nouser
+	-nogroup
+	
+	-type
+		f 
+		d 
+		c
+		
+	-size
+	    #k 
+		#M
+		#G
+组合条件
+	-a 
+	-o
+	-not
+	
+	-mtime modify
+	-ctime change
+	-atime access
+	
+	
+权限：
+	SUID 运行某程序时，相应进程的属主是文件自身的属主，二不是启动者
+			chmod u+S FILE
+			chmod u-s file 
+				如果file本身就有执行权限，
+	SGID 
+	
+	sticky : 在一个公共目录 ， 每个人都可以创建文件，删除自己的文件，但是不能删除别人的文件
+	
+			chmod o+t DIR
+			chmod o-t Dir
+facl  利用文件扩展保存额外的访问控制权限
+	setfacl
+		-m 
+		
+		
+终端类型：
+	console : 控制台
+	pty：物理终端（VGA）
+	tty：虚拟控制台（VGA）
+	ttys：串行终端
+	pts：伪终端
+	
+mail 发送邮件
+
+随机数：熵池
+	/dev/random
+	/dev/urandom
+
+磁盘管理：
+	机械式：
+		partition  分区
+			mbr（master boot record）：主引导记录（512byte）
+				446byte ： bootlooder  程序 
+				64byte ：
+					每16标识一个分区
+				2byte：magic Number 
+					标记MBR是否有效
+					
+创建连接：
+	ln [-s -v ]
+硬链接:
+	1、只能对文件创建不能应用于目录
+	2、不能跨文件系统
+	3、创建硬链接会增加文件被连接的次数
+软连接：
+	1、可应用于目录
+	2、可以跨文件系统
+	3、不会增加被连接文件的次数
+	4、其大小为指定的路径所包含的字符个数
+	
+du 
+	-S 
+	-h 
+设备文件：
+	按块为单位，随机访问设备
+	按字符为单位。线性设备
+/dev 
+	主设备号（major number）
+	
+mknod
+	-m 
+硬盘设备的设备文件：
+	IDE ATA :hd
+	SATA : sd
+	SCSI :sd 
+	usb : sd 
+	
+IDE：第一个IDE: 主 从
+	/dev /hds   /dev/hdb
+	第二个IDE 主从
+	/dev /hds  /dev/hdd
+	
+hda:
+	hda1
+	hda2
+	hda3
+	hda4
+	hda5 第一个逻辑分区
+
+查看磁盘：
+	fdisk 
+	
+	
+linux 上面的文件系统
+	文件系统是内核的基本功能
+	
+	常见文件系统:(VFS)
+	FAT32  vfat
+	NTFS
+	ISO9660
+	CIFS
+	
+	ext2
+	ext3
+	ext4
+	reiserfs
+	jfs
+	
+	nfs
+	ocfs
+	gfs2
+	
+磁盘分区：
+	fdisk -l 
+		p:显示当前硬件分区，包括没有保存的改动
+		n：创建新分区
+		d：删除一个分区
+		w：保存退出
+		q：不保存
+		t：修改分区类型
+		l：显示所有支持的类型
+		
+		ring0   ring1 ring2 ring3
+用户模式
+用户空间
+
+文件系统管理：
+	格式化：重新创建文件系统
+	
+	
+	
+	
+	
+	
+网络：
+	线路仲裁：
+		CSMA/CD 多路访问检测冲突
+		环形
+		hub
+		
+		
+IPv4 点分十进制：
+0——255
+221.34.45.12
+A类：掩码： 255.0.0.0
+	0 000 0001 - 0 111 1111
+	127个A类地址  127 用于回环 1-126  
+	2^7-1个A类地址
+	容纳主机：2^24-2
+		全零：网络地址
+		全1：广播地址
+	
+B类：		255.255.0.0
+	10 00 0000 - 10 11 1111
+	128- 191 
+	64个B类网络 
+	2^14
+	2^16-2
+	
+C类：		255.255.255.0
+	110 0 0000 - 110 0 1111
+	192 - 223
+	32个c类地址 
+	2^21
+	2^8-2
+	
+D类：1110 0000 - 1110 1111
+	224 - 239
+E类：
+	
+私有地址：
+	A类：10.0.0.0/8
+	B类：172.16.0.0/16 - 172.31.0.0/16
+	C类：192.168.0.0/24 - 192.168.255.0/24
+路由：
+	主机路由：
+	网络路由：
+	最佳匹配为标准：		
+
+
+主机接入网络：	
+IP 
+netmask
+gateway
+hostname
+DNS1
+DNS2
+DNS3
+	 手动指定
+	 DHCP：
+		169.254.  随机获得本地地址
+路由：
+DHCP
+
+
+
+linux：网络属于内核的内容
+	lo ： 本地回环
+	以太网网卡：ethX
+	pppX
+	
+redhat5	/etc/modprobe.conf
+
+redhat6 /etc/udev/rules.d/70-persistent-.rules
+
+ifconfig
+	-a 所有网卡信息
+	[ethX]指定网卡信息
+	ifconfig ethX IP/MASK [up|down]
+		配置的地址立即生效，重启动网络服务将全部失效
+	
+网络服务：
+redhat5	/etc/init.d/network {start | stop | restart | status}
+redhat6 /etc/init.d/NetworkManger {start | stop | restart | status}
+
+
+网关：
+	route
+		add:添加
+			-host 主机路由 
+			-net  网络路由 
+				-net 0.0.0.0
+				
+				route add -net | -host DEST gw NEXTHOP
+				
+		del:删除 
+				route del -net 10.0.0.0/8 [gw NEXTHOP]
+				route del -net 0.0.0.0
+				route del  default
+				重启网络后失效
+	查看：
+		route -n 以数字方式显示信息
+		
+网络配置文件：
+	/etc/sysconfig/network
+网络接口配置文件：
+	/etc/sysconfig/network-scripts/ifcfg-INTERFACE_NAME
+	
+	DEVICE=: 关联设备名称，要与文件名的后半部分“INTERFACE_NAME”保持一致
+	BOOTPROTO = {start | stop | restart | status}：引导协议：要用静态地址
+	IPADDR:IP 地址
+	NETMASK  子网掩码
+	GATEWAY 设定默认网关
+	ONBOOT  开机是否自动激活此网络接口
+	HWADDR  硬件地址 可以省略
+	USERCTL {yes|no} 是否允许普通用户控制此接口
+	PEERDNS{yes|no} 是否在BOOTPROTO 为dhcp时接受DHCP服务器指定的DNS地址
+	不能立即生效 但是能永久生效
+     
+	 重新启动文件
+	 cd /etc/sysconfig/network-scripts
+	 vim  ifcfg 文件 
+	 /etc/init.d/network restart
+	 
+	 路由：\
+	 添加格式一：
+	 /etc/sysconfig/network-scripts/route-ethx
+	 添加格式二：
+	 ADDRESS0=
+	 NETMASK0=
+	 GATEWAY0=
+	 
+	 DNS服务器指定方法只一种：
+	 /etc/resolv.conf
+	 nameserver NDS_IP_1
+	 nameserver DNs_IP_2
+	 
+	 指定本地解析：
+	 /etc/hosts
+	 DNS --> /etc/hosts --> NDS 
+	 
+配置主机名：立即生效
+	/etc/sysconfig/network
+	HOSTNAME=
+	
+	
+iproute2
+	ip 
+	   link: 配置网络接口属性
+			 show
+					ip -s link show 
+	   addr：协议地址
+	   route : 
+	   
+	   
+一块网卡可以使用多个地址：
+网络设备可以别名：
+	eth0
+		ethx:x 
+		
+	配置方法：
+		/etc/sysconfig/network-scripts/ifcfg-ethx:x
+		
+		
+		
+		
+		
+		
+		
+.so
+shared object
+源代码--> 编译--> 链接--> 运行 
+
+/etc  ,  /bin  /sbin  /lib  
+	系统启动需要的程序，这些目录不能额外挂载，必须在跟文件系统的分区上
+	
+/usr/
+	bin
+	sbin
+	lib
+	操作系统的核心功能 ， 可以单独分区
+	
+/usr/local
+	bin
+	sbin
+	lib
+	etc
+	man
+	第三方软件，建议独立分区
+	
+/opt 
+
+/sys 
+/proc 
+	不能单独分区，默认为空
+/dev 设备，不能单独分区：
+/root 不能单独分区 
+/boot 内核 ， initrd
+
+	运行级别:（0-6）
+			0  关机
+			1  单用户（安全模式，直接登录根  以管理员切入）
+			2  多用户模式：（不启用NFS）
+			3：正常多用户模式;(文本模式)
+			4： 保留模式
+			5： 图形终端模式
+			6： 重启
+				/etc/inittab
+		启动的服务不同
+
+		
+		详解启动过程：
+			bootloader（MBR）（win8锁定MBR）
+				LIIO : linux loader  不支持8G以上的硬盘
+				GRUB: Grand Unified Bootloader
+					stagel:MBR 
+						stage1.5: 识常见的文件系统
+					stage2: /boot/grub/
+					
+[root@localhost kernel]# cat /etc/grub.conf
+# grub.conf generated by anaconda
+#
+# Note that you do not have to rerun grub after making changes to this file
+# NOTICE:  You have a /boot partition.  This means that
+#          all kernel and initrd paths are relative to /boot/, eg.
+#          root (hd0,0)
+#          kernel /vmlinuz-version ro root=/dev/VolGroup00/LogVol00
+#          initrd /initrd-version.img
+#boot=/dev/sda
+default=0#设定默认启动的title的编号，从0开始
+timeout=5#等待用户选择的超时长，单位是秒
+splashimage=(hd0,0)/grub/splash.xpm.gz
+hiddenmenu#隐藏菜单
+title Red Hat Enterprise Linux Server (2.6.18-164.el5xen)#定义当前内核标题或者系统名称，可以自由修改
+	root (hd0,0)#对grub来说，所有类型的硬盘一律为hd，0表示对应磁盘的分区
+	kernel /xen.gz-2.6.18-164.el5 
+	module /vmlinuz-2.6.18-164.el5xen ro root=/dev/VolGroup00/LogVol00 rhgb quiet
+	module /initrd-2.6.18-164.el5xen.img
+
+					
+				root(hd0,0)	对grub来说，所有类型的硬盘一律为hd，0表示对应磁盘的分区
+					
+		
+		
+		
+		
+	fost --> bios (HD) --> MBR(bootlooder)(文件系统结构 ext1 ext2) --> 内核 (接力，一个接一个，另一个退出，只是探测空间，文件系统并没有加载)
+	--> initrd --> init (用户空间管理)（/(rootfs，自引用，内核装在根文件系统)  /usr(可以独立分区)  /boot  /home ）
+	内核设计结构：
+	
+		单内核：（linux ）
+			模块设计：KO（kernel object ） 内核对象
+			动态模块加载(内核：/lib/modules(内核版本号目录))
+			vmlinux-2.6.32
+			/lib/modules/2.6.32
+			
+			du -sh /lib/modules/2.6.18-164.el5xen/查看文件大小
+			加一层:向内核提供驱动（此文件没有编译，安装后动态搜集生成，根（虚，切换）文件系统）
+			
+			chroot
+			ldd(14_1  40分钟)
+			Nash
+				swith_root
+				将物理的空间映射为磁盘
+				Redhat5 ： ramdisk--> initrd
+				Redhat6 : ramfs --> initramfs
+			
+		微内核：设计复杂，（Windows 支持多线程）
+		
+	文件系统：
+		进程管理：
+		内存管理；
+		网站管理；
+		安全功能：
+		驱动程序：
+		
+
+rss 
+vsz
+
+
+进程管理：
+	Interruptible 
+	UNinterruptible
+	
+	O：标准：
+		o(1)
+		o(n)
+		o(log n)
+		o(n^2)
+		o(2^n)
+		
+	cpu获得更多运行时间
+	更优先获得机会：
+	100-139
+		nice值  (-20 - 19) (100 - 139)
+		0
+		
+	PID ： 进程号
+	init的进程号永远为1
+	ps
+		process state
+			sysv风格
+			bsd风格
+			a：显示所有跟终端有关的系统
+			u：
+			x：无关的
+			
+		进程分类：
+			跟终端相关的进程
+			      无关
+		进程状态：
+			D:不可中断的睡眠
+			R:运行或者就绪
+			S:可终端的睡眠
+			T:停止
+			Z:僵死
+			
+			<: 优先级高的进程
+			N:低优先级的进程
+			l：多线程进程
+			s：会话进程的首进程
+			[]:内核线程
+			
+			-elF
+			-ef
+			-eF
+			-o 
+	pstree
+	pgrep
+	pridof:根据进程名查找进程号
+	top：
+		M 内存大小排序
+		P CPU的百分比
+		T 时间
+		
+		l 是否显示平均负载和启动时间
+		t         cpu状态信息和进程
+		m         内存相关信息
+		
+		c 完整命令行信息
+		q 退出top
+		k 终止某个进程
+		
+		top -d 1
+			-b 
+			-n 
+			
+	进程间通信：（IPC）
+		共享内存
+		信号signal
+		semaphore
+		
+		
+		kill -l 显示所有可发信号
+			重要信号：
+					1 SIGUP  让一个进程不用重启，就可以重读其配置文件，并生效
+					2 SIGINT 中断  Ctrl+c 
+					9 SIGKILL 杀死进程
+					15 SIGTERM 终止进程 
+		killall  command
+		
+调整nice
+	renice 
+		
+	vmstat
+	free
+	kill
+	pkill
+	bg
+		
+	fg
+		后台作业调回前台
+		
+	前台作业：占据命令提示符
+	后台作业：启动后释放命令提示符，后续操作在后台完成
+	
+	Ctrl+z 送到后台
+	command & 让命令在后台执行
+	
+	bg：让后台作业
+		+ 命令将默认操作的作业
+		— 命令将第二个默认操作的作业
+		kill %jobid  终止作业
+		
+vmstat：查看系统命令
+uptime： /proc /maminfo
+
+cat maps
+		
+		

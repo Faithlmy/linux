@@ -1,0 +1,49 @@
+
+DNS
+BIND
+SSL/TLS
+OpenSSL 
+CA 
+PKI
+HTTP
+CDN
+File Server
+Netfilter
+NSSwitch
+SELinux
+
+mysql
+
+DNS : Domian Name Service
+	www.magedu.com(主机，FQDN ：full qualified Domian Name 完全限定域名)
+DNS：名称解析， 背后有查询（数据库）	
+	FQDN <--> IP
+	
+nsswitch
+
+/etc/nsswitch.conf
+
+hosts:files  dns
+file: /etc/hosts
+dns:DNS 
+
+hosts文件
+	IP         FQDN       Ailases
+172.8.9.3   www.biadu.com   www
+	
+IANA：A-->D 在线下载hosts文件
+	ftp:hosts
+	1、周期下载
+	2、server：
+	3、server集群  1kw
+	
+	4、分布式数据库：
+		划分权限（字片）
+	
+ICANN:现在的管理机构，民间组织
+		
+
+stub resolver:名称解析器
+
+libnss_files.so
+libnss_dns.so
