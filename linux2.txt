@@ -87,5 +87,84 @@ TLD:
 			
 数据库中的每一条记录都称为一个资源记录
 资源记录格式：
-	NAME IN TTL RRT(资源记录类型)  VALUE  
+	NAME            TTL      IN     RRT(资源记录类型)   VALUE  
+	www.magedu.com 		     IN      A                   1.1.1.1
+	1.1.1.1                   IN    PTR            www.magedu.com
+	
+	资源记录类型：
+	
+	SOA (start of Authotity):
+		ZONE NAME	TTL   IN    SOA  FQDN ADMINISTRATOR_MAILBOX
+		
+		
+			(serial namber
+			refresh
+			retry
+			expire
+			na tt1
+			)
+	时间单位：M   H   D   W  默认秒
+	邮箱格式：admain@magedu.com   不能用@ 用.代替
+	@在文件中表示区域名
+	magedu.com  600 IN  SOA  ns1.magedu.com    admian.magedu.com(
+	                20129090;不能超过10个
+					1H
+					5M
+					1W
+					1D
+					)
+	
+	NS (Name Server):ZONE NAME --> FQDN
+		
+		MX(Mail eXchanger):ZONE NAME --> FQDN
+		magedu.com    600 IN  NS   ns1,magedu.com
+		magedu.com   600 IN NS     ns2.magedu.com
+		ns1.magedu.com   600 IN   A   1.2.1.3
+			ZONE NAME     TTL   IN　　MX  pri  VALUE 
+				优先级（0——99）
+			mege.com      600  IN   MX  10  mail.magedu.com 
+			mail.magedu.com  600 IN A 1.1.2.3
+		A(address): FQDN --> IPv4
+		AAAA: FQDN --> IPv6
+		PTR (pointer): IP ---> FQDN
+		
+		CNAME:FQDN-->FQDN
+			www2.magedu.com   IN   CNAME  www.magedu.com
 			
+			TXT
+			CHAOS
+			SRV
+
+			
+			
+			
+域：Domain(逻辑)
+区域：Zone (物理)
+
+.com 
+magedu.com   IN   NS    na.magedu.com 
+na.magedu.com IN A    192.168.0.10
+
+
+magedu.com  192.168.0.0/24
+
+www    192.168.0.1
+mail   192.168.0.2  MX
+
+建立两个区域文件：
+	正向区域文件：
+	magedu.com  IN   SOA
+	
+    反向区域文件
+	0.168.192.in-addr.arpa.  IN   SOA
+	
+	1.0.168.192.in-addr.arpa.  IN  PTR   www.magedu.com 
+	
+区域传递类型：	
+	完全区域传递：axfr
+	增量区域传递：ixfr
+区域类型：
+	主区域：master
+	从区域：slave
+	提示区域：hint
+	转发区域：forward
