@@ -168,3 +168,29 @@ mail   192.168.0.2  MX
 	从区域：slave
 	提示区域：hint
 	转发区域：forward
+	
+	
+	
+	
+DNS 监听的协议及端口
+	53/udp
+	53/tcp
+	953/tcp  rndc
+	
+	
+socket: IP:PORT
+HTTP :HyperText Transfer Protocol:超文本传输
+	web：
+		http/0.9:纯文本  
+		HTML：HyperText Mark Language
+		
+Browser:
+	1.1.1.1  web , a.html
+	2.2.2.2 web   a.html
+	
+URI : Uniform resource  Indentifier,全球范围 识别文本
+	统一：路径格式上的统一
+	
+		URL：Uniform resource Locator
+		
+			 
